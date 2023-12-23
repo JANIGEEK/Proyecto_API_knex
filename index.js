@@ -1,5 +1,7 @@
 //  Importar express
 const express = require('express')
+// Importar las rutas
+const productsRoutes = require('./routes/productRoutes')
 
 const app = express()
 
@@ -7,6 +9,9 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+// RUTAS
+app.use('/api/v1', productsRoutes)
 
 /* levantar el servidor */
 app.listen(3000, () => {
