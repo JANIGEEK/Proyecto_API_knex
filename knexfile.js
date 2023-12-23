@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Update with your config settings.
 
 /**
@@ -8,9 +9,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'electronic_db',
-      user:     'postgres',
-      password: 'cima28PER+'
+      database: process.env.DB_NAME_DEV,
+      user: process.env.DB_USER_DEV,
+      password: process.env.DB_PASS_DEV
     }
   },
 
@@ -18,7 +19,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -34,7 +35,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -46,4 +47,4 @@ module.exports = {
     }
   }
 
-};
+}

@@ -1,3 +1,4 @@
+require('dotenv').config()
 //  Importar express
 const express = require('express')
 // Importar las rutas
