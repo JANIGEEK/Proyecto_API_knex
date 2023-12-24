@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 // Importar las rutas
 const productsRoutes = require('./routes/productRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.use(express.json())
 
 // RUTAS
 app.use('/api/v1', productsRoutes)
+app.use('/api/v1', userRoutes)
 
 /* levantar el servidor */
 app.listen(3000, () => {
