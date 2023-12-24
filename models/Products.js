@@ -12,7 +12,51 @@ const create = (bodyProduct) => {
     .returning('*') // Datos que me va a retornar
 }
 
+const findAll = () => {
+  return knex
+    .select(['product_id', 'name', 'description', 'price',
+      'sku', 'created_at']) // Elegir que datos va a devolver
+    .from('products') // El lugar de donde se va a traer los datos
+    .where({ active: true }) // Traer datos que no tengas un soft delete
+}
+
+const findById = (productId) => {
+  return knex
+    .select(['product_id', 'name', 'description', 'price',
+      'sku', 'created_at'])
+    .from('products')
+    .where({ active: true })
+    .where({ product_id: productId }) // Condicion para elegir un dato
+}
+
+const update = (productId, bodyToUpdate) => {
+  return knex
+    .update(bodyToUpdate)
+    .from('products')
+    .where({ product_id: productId })
+    .returning('*')
+}
+
+const destroy = (productId) => {
+  return knex
+    .del() // Eliminar dato
+    .from('products')
+    .where({ product_id: productId })
+}
+
+const softDestroy = (productId) => {
+  return knex
+    .update({ active: false })
+    .from('products')
+    .where({ product_id: productId })
+}
+
 // Exportar funciones
 module.exports = {
-  create
+  create,
+  findAll,
+  findById,
+  update,
+  destroy,
+  softDestroy
 }
